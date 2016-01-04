@@ -1,6 +1,8 @@
 body {
-  font-family: sans-serif;
-  background: #eee;
+  padding: 60px 0;
+  background: #ffffff;
+/*  font-family: sans-serif;
+  background: #eee;*/
 }
 
 a, h1, h2 {
@@ -50,6 +52,11 @@ h2 {
   font-weight: bold;
 }
 
+.error {
+  color: red;
+  font-size: .8em;
+  background-color: #ffffff;
+}
 .metanav {
   text-align: right;
   font-size: 0.8em;
@@ -63,9 +70,15 @@ h2 {
   padding: 0.5em;
 }
 
+.footer{
+  padding-top: 30px;
+}
+
 .error {
-  background: #F0D6D6;
-  padding: 0.5em;
+  color: red;
+  font-size: .8em;
+/*  background: #F0D6D6;
+  padding: 0.5em;*/
 }
 
 .datagrid table {
