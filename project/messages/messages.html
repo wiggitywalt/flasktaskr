@@ -1,0 +1,62 @@
+{% extends "_base.html" %}
+{% block content %}
+
+<a href="/logout">Logout</a>
+
+<!-- <div class="add-message">
+  <h3>Add a new message:</h3>
+
+  <form action="{{ url_for('new_message') }}" method="POST">
+    {{ form.csrf_token }}
+  <p>
+    {{ form.message(placeholder="message") }}
+      {% if form.message.errors %}
+      <span class="error">
+        {% for error in form.message.errors %}
+          {{ error }}
+        {% endfor %}
+      </span>
+      {% endif %}
+  </p>
+  <p>
+    {{ form.posted_date(placeholder="posted date") }}
+      {% if form.posted_date.errors %}
+        <span class="error">
+          {% for error in form.posted_date.errors %}
+            {{ error }}
+          {% endfor %}
+        </span>
+      {% endif %}
+  </p>
+
+  <p><input class="btn btn-default" type="submit" value="Submit" /></p>
+</form>
+</div> -->
+<div class="entries">
+  <br>
+  <br>
+  <h2>messages:</h2>
+  <div class="datagrid">
+    <table>
+      <thead>
+        <tr>
+          <th width="200px"><strong>Message</strong></th>
+          <th width="75px"><strong>Posted Date</strong></th>
+        </tr>
+      </thead>
+      {% for task in open_tasks %}
+        <tr>
+          <td width="200px">{{ message.message }}</td>
+          <td width="75px">{{ message.posted_date }}</td>
+<!--           <td>
+            <a href="{{ url_for('delete_entry', task_id = task.task_id) }}">Delete</a>  -
+            <a href="{{ url_for('complete', task_id = task.task_id) }}">Mark as Complete</a>
+          </td> -->
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <br>
+  <br>
+</div>
+{% endblock %}

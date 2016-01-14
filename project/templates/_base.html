@@ -32,8 +32,16 @@
                 <li><a href="/register">SignUp</a></li>
               {% else %}
                 <li><a href="/logout">SignOut</a></li>
+                <li><a href="{{ url_for('tasks.tasks') }}">Tasks</a></li>
+                <li><a href="{{ url_for('users.allusers') }}">Users</a></li>
+                <li><a href="{{ url_for('messages.allmessages') }}">Messages</a></li>
               {% endif %}
             </ul>
+            {% if session.logged_in %}
+              <ul class="nav navbar-nav navbar-right">
+                <li><a>Welcome, {{ username }}.</a></li>
+              </ul>
+            {% endif %}
           </div><!--/.nav-collapse-->
         </div>
       </div>

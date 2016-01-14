@@ -1,7 +1,8 @@
 #project / models.py
 
-from views import db
+from project import db
 from datetime import datetime
+
 class Task(db.Model):
   __tablename__ = "tasks"
 
@@ -33,6 +34,8 @@ class User(db.Model):
   email = db.Column(db.String, unique=True, nullable=False)
   password = db.Column(db.String, nullable=False)
   tasks = db.relationship('Task', backref='poster')
+  messages = db.relationship('Message', backref='poster')
+  role = db.Column(db.String, default='user')
 
   def __init__(self,name,email,password):
     self.name = name
@@ -41,3 +44,22 @@ class User(db.Model):
 
   def __repr__(self):
     return '<User {0}>'.format(self.name)
+
+
+class Message(db.Model):
+  __tablename__ = "messages"
+
+  message_id = db.Column(db.Integer, primary_key=True)
+  message = db.Column(db.String, nullable=False)
+  posted_date = db.Column(db.Date,default=datetime.utcnow())
+  status = db.Column(db.Integer)
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+  def __init__(self, message, posted_date, status, user_id):
+    self.message = message
+    self.posted_date = posted_date
+    self.status = status
+    self.user_id = user_id
+
+  def __repr__(self):
+    return '<name {0}>'.format(self.message)

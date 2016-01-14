@@ -1,0 +1,31 @@
+{% extends "_base.html" %}
+{% block content %}
+
+<a href="/logout">Logout</a>
+
+<div class="entries">
+  <br>
+  <br>
+  <h2>messages:</h2>
+  <div class="datagrid">
+    <table>
+      <thead>
+        <tr>
+          <th width="200px"><strong>Message</strong></th>
+          <th width="75px"><strong>Posted Date</strong></th>
+          <th><strong>Posted by</strong></th>
+        </tr>
+      </thead>
+      {% for message in entries %}
+        <tr>
+          <td width="200px">{{ message.message }}</td>
+          <td width="75px">{{ message.posted_date }}</td>
+          <td width="90px">{{ message.poster.name }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <br>
+  <br>
+</div>
+{% endblock %}
