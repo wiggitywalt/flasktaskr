@@ -42,8 +42,6 @@ def closed_tasks():
 ### routes ####
 ###############
 
-
-
 @tasks_blueprint.route('/tasks/')
 @login_required
 def tasks():

@@ -75,7 +75,8 @@ def logout():
   flash('Goodbye!')
   return redirect(url_for('login'))
 
-@app.route('/', methods=['GET','POST'])
+
+@app.route('/', methods=['GET', 'POST'])
 def login():
   error = None
   form = LoginForm(request.form)
@@ -161,22 +162,3 @@ def delete_entry(task_id):
     return redirect(url_for('tasks'))
   except:
     print sys.exc_info()[0]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

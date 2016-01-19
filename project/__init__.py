@@ -11,6 +11,7 @@ app.config.from_pyfile('_config.py')
 bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
 
+#import blueprints
 from project.users.views import users_blueprint
 from project.tasks.views import tasks_blueprint
 from project.api.views import api_blueprint
@@ -22,6 +23,7 @@ app.register_blueprint(tasks_blueprint)
 app.register_blueprint(api_blueprint)
 app.register_blueprint(messages_blueprint)
 
+#error http codes (404 and 500)
 @app.errorhandler(404)
 def not_found(error):
   now = datetime.datetime.now()

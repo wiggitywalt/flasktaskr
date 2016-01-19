@@ -59,7 +59,7 @@ def logout():
   flash('Goodbye')
   return redirect(url_for('users.login'))
 
-@users_blueprint.route('/', methods=['GET', 'POST'])
+@users_blueprint.route('/login/', methods=['GET', 'POST'])
 def login():
   error = None
   form = LoginForm(request.form)
@@ -77,6 +77,8 @@ def login():
       else:
         error = 'Invalid credentials.'
   return render_template('login.html', form=form, error=error)
+
+
 
 @users_blueprint.route('/register/', methods=['GET','POST'])
 def register():
