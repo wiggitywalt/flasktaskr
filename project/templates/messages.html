@@ -1,29 +1,34 @@
 {% extends "_base.html" %}
-{% block content %}
 
-<div class="entries">
-  <br>
-  <br>
-  <h2>messages:</h2>
-  <div class="datagrid">
-    <table>
-      <thead>
-        <tr>
-          <th width="200px"><strong>Message</strong></th>
-          <th width="75px"><strong>Posted Date</strong></th>
-          <th><strong>Posted by</strong></th>
-        </tr>
-      </thead>
-      {% for message in entries %}
-        <tr>
-          <td width="200px">{{ message.message }}</td>
-          <td width="75px">{{ message.posted_date }}</td>
-          <td width="90px">{{ message.poster.name }}</td>
-        </tr>
-      {% endfor %}
-    </table>
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h1>Wiggity to you!</h1>
+    <p>This is just a POC using Python/Flask.</p>
   </div>
-  <br>
-  <br>
+{% if session.logged_in %}
+  <div class="add-message">
+    <h3>Add a new task:</h3>
+
+    <form action="/" method="POST">
+      {{ form.csrf_token }}
+    <p>
+      {{ form.message(placeholder="message") }}
+        {% if form.message.errors %}
+        <span class="error">
+          {% for error in form.name.errors %}
+            {{ error }}
+          {% endfor %}
+        </span>
+        {% endif %}
+    </p>
+    <p><input class="btn btn-default" type="submit" value="Submit" /></p>
+    </form>
+  </div>
+{% endif %}
+
+  {% for entry in entries %}
+    <p><h3>{{ entry.message }}</h3> {{ entry.poster.name }}</p>
+  {% endfor %}
 </div>
 {% endblock %}

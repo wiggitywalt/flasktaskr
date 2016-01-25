@@ -5,7 +5,8 @@ from functools import wraps
 from flask import flash, redirect, render_template, \
     request, session, url_for, Blueprint
 
-# from .forms import AddTaskForm
+
+from .forms import AddMessageForm
 from project import db
 from project.models import Message
 
@@ -35,28 +36,26 @@ def login_required(test):
 
 @messages_blueprint.route('/')
 def allmessages():
+  form = AddMessageForm(request.form)
   all_messages = db.session.query(Message).all()
   return render_template(
     'messages.html',
-    entries=all_messages
+    entries=all_messages,
+    form = form
   )
 
 @messages_blueprint.route('/newmessage/')
 @login_required
 def new_message():
   error = None
-  form = AddTaskForm(request.form)
+  form = AddMessageForm(request.form)
   if request.method == 'POST':
     if form.validate_on_submit():
-      new_task = Task(
+      new_message = Message(
         form.name.data,
-        form.due_date.data,
-        form.priority.data,
-        datetime.datetime.utcnow(),
-        '1',
         session['user_id']
       )
-      db.session.add(new_task)
+      db.session.add(new_message)
       db.session.commit()
       flash('New entry was successful.')
-      return redirect(url_for('tasks.tasks'))
+      return redirect(url_for('messages.messages'))

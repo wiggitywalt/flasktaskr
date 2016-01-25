@@ -30,6 +30,7 @@
             <ul class="nav navbar-nav">
               {% if not session.logged_in %}
                 <li><a href="/register">SignUp</a></li>
+                <li><a href="/login">Login</a></li>
               {% else %}
                 <li><a href="/logout">SignOut</a></li>
                 <li><a href="{{ url_for('tasks.tasks') }}">Tasks</a></li>
