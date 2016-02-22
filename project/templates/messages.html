@@ -4,22 +4,32 @@
 <div class="container">
   <div class="jumbotron">
     <h1>Wiggity to you!</h1>
-    <p>This is just a POC using Python/Flask.</p>
+    <p>O, the powers of python and flask.</p>
   </div>
 {% if session.logged_in %}
   <div class="add-message">
     <h3>Add a new task:</h3>
 
-    <form action="/" method="POST">
+    <form action="{{ url_for('messages.new_message') }}" method="POST">
       {{ form.csrf_token }}
     <p>
       {{ form.message(placeholder="message") }}
         {% if form.message.errors %}
         <span class="error">
-          {% for error in form.name.errors %}
+          {% for error in form.message.errors %}
             {{ error }}
           {% endfor %}
         </span>
+        {% endif %}
+    </p>
+    <p>
+      {{ form.posted_date(placeholder="Posted date") }}
+        {% if form.posted_date.errors %}
+          <span class="error">
+            {% for error in form.posted_date.errors %}
+              {{ error }}
+            {% endfor %}
+          </span>
         {% endif %}
     </p>
     <p><input class="btn btn-default" type="submit" value="Submit" /></p>
@@ -28,7 +38,12 @@
 {% endif %}
 
   {% for entry in entries %}
-    <p><h3>{{ entry.message }}</h3> {{ entry.poster.name }}</p>
+    <p><h3>{{ entry.message }}</h3> {{ entry.poster.name }}  &nbsp;&nbsp;{{ entry.posted_date }} </p>
   {% endfor %}
 </div>
 {% endblock %}
+<script>
+$(function() {
+
+});
+</script>

@@ -1,16 +1,18 @@
 {% extends "_base.html" %}
 {% block content %}
 
-
 <table class="table table-striped">
   <tr>
-    <th>User name</th>
-    <th>User email</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
   </tr>
+
   {% for user in all_users %}
   <tr>
     <td>{{ user.name }}</td>
     <td>{{ user.email }}</td>
+    <td>{{ user.role }}</td>
   </tr>
   {% endfor %}
 </table>

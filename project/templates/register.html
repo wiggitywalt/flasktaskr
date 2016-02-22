@@ -6,12 +6,9 @@
 <h3>Please register to access the task list.</h3>
 
 <form method="POST" action="/register/">
-
 {{ form.csrf_token }}
-
 <p>
   {{ form.name(placeholder="name") }}
-
   {% if form.name.errors %}
     <span class="error">
       {% for error in form.name.errors %}
@@ -23,7 +20,6 @@
 
 <p>
   {{ form.email(placeholder="email address") }}
-
   {% if form.email.errors %}
     <span class="error">
       {% for error in form.email.errors %}
@@ -35,7 +31,6 @@
 
 <p>
   {{ form.password(placeholder="password") }}
-
   {% if form.password.errors %}
     <span class="error">
       {% for error in form.password.errors %}

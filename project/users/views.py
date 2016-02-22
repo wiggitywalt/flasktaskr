@@ -71,7 +71,11 @@ def login():
         session['user_id'] = user.id
         session['role'] = user.role
         session['user_name'] = user.name
-        login_msg = 'Welcome, ' + user.name
+        user_name = session['user_name']
+
+        pretty_user_name = user_name.capitalize()
+        session['pretty_user_name'] = pretty_user_name
+        login_msg = 'Welcome, ' + pretty_user_name
         flash(login_msg)
         return redirect(url_for('tasks.tasks'))
       else:
