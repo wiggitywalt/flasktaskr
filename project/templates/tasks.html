@@ -1,8 +1,6 @@
 {% extends "_base.html" %}
 {% block content %}
 
-<h1>Welcome to FlaskTaskr</h1>
-<br />
 <a href="/logout">Logout</a>
 
 <div class="add-task">
@@ -56,7 +54,7 @@
       <thead>
         <tr>
           <th width="200px"><strong>Task Name</strong></th>
-          <th width="75px"><strong>Due Date</strong></th>
+          <th width="90px"><strong>Due Date</strong></th>
           <th width="100px"><strong>Posted Date</strong></th>
           <th width="50px"><strong>Priority</strong></th>
           <th width="90px"><strong>Posted By</strong></th>
@@ -66,8 +64,8 @@
       {% for task in open_tasks %}
         <tr>
           <td width="200px">{{ task.name }}</td>
-          <td width="75px">{{ task.due_date }}</td>
-          <td width="100px">{{ task.posted_date }}</td>
+          <td width="90px">{{ task.due_date.strftime('%d-%m-%Y') }}</td>
+          <td width="100px">{{ task.posted_date.strftime('%d-%m-%Y') }}</td>
           <td width="50px">{{ task.priority }}</td>
           <td width="90px">{{ task.poster.name }}</td>
           <td>

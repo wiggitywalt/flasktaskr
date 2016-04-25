@@ -8,15 +8,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Welcome to FlaskTaskr</title>
-    <!--styles-->
+    <title>--wiggity--</title>
+
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/yeti/bootstrap.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 
-
     <body>
-
       <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
@@ -27,7 +25,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">FlaskTaskr</a>
+            <a class="navbar-brand" href="/">WIGGITY</a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -52,7 +50,6 @@
 
       <div class="container">
         <div class="content">
-
           {% for message in get_flashed_messages() %}
             <div class="flash">{{ message }}</div>
           {% endfor %}

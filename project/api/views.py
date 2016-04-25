@@ -76,14 +76,14 @@ def task(task_id):
 ##messages##
 @api_blueprint.route('/api/v1/messages/')
 def api_messages():
-  results = db.session.query(Message).limit(10).offset(0).all()
+  results = db.session.query(Message).offset(0).all()
   json_results = []
   for result in results:
     data = {
       'message_id': result.message_id,
       'message': result.message,
       'posted date': str(result.posted_date),
-      'status': result.status,
+      'status' : str(result.status),
       'user id': result.user_id
       }
     json_results.append(data)
@@ -105,16 +105,3 @@ def message(message_id):
     result = {"error" : "Element does not exist"}
     code = 404
   return make_response(jsonify(result), code)
-
-
-
-
-
-
-
-
-
-
-
-
-

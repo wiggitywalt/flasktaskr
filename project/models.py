@@ -52,11 +52,13 @@ class Message(db.Model):
   message_id = db.Column(db.Integer, primary_key=True)
   message = db.Column(db.String, nullable=False)
   posted_date = db.Column(db.Date,default=datetime.utcnow())
+  status = db.Column(db.Integer)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-  def __init__(self, message, posted_date, user_id):
+  def __init__(self, message, posted_date, status, user_id):
     self.message = message
     self.posted_date = posted_date
+    self.status = status
     self.user_id = user_id
 
   def __repr__(self):
