@@ -23,12 +23,12 @@ class RegisterForm(Form):
     )
 
 class LoginForm(Form):
-  name = StringField(
+    name = StringField(
     'Username',
     validators=[DataRequired()]
-  )
+    )
 
-  password = PasswordField(
+    password = PasswordField(
     'Password',
     validators=[DataRequired()]
     )
