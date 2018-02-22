@@ -37,7 +37,7 @@ def login_required(test):
 @messages_blueprint.route('/')
 def allmessages():
     form = AddMessageForm(request.form)
-    all_messages = db.session.query(Message).order_by(Message.posted_date.desc()).all()
+    all_messages = db.session.query(Message).order_by(Message.message_type.desc()).all()
     return render_template(
       'messages.html',
       entries=all_messages,
@@ -53,7 +53,7 @@ def new_message():
       if form.validate_on_submit():
         new_message = Message(
           form.message.data,
-          form.posted_date.data,
+          form.message_type.data,
           session['user_id']
         )
         db.session.add(new_message)

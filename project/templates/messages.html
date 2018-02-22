@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="jumbotron">
-    <h1>snippets</h1>
+    <h1>Snippets</h1>
   </div>
 {% if session.logged_in %}
   <div class="add-message">
@@ -12,7 +12,9 @@
     <form action="{{ url_for('messages.new_message') }}" method="POST">
       {{ form.csrf_token }}
     <p>
-      {{ form.message(placeholder="message") }}
+      {{ form.message_type(placeholder="Type") }}
+      <br /><br />
+      {{ form.message(placeholder="Snippet code", cols="75", rows="10") }} 
         {% if form.message.errors %}
         <span class="error">
           {% for error in form.message.errors %}
@@ -21,23 +23,22 @@
         </span>
         {% endif %}
     </p>
-    <p>
-      {{ form.posted_date(placeholder="Posted date") }}
-        {% if form.posted_date.errors %}
-          <span class="error">
-            {% for error in form.posted_date.errors %}
-              {{ error }}
-            {% endfor %}
-          </span>
-        {% endif %}
-    </p>
+
     <p><input class="btn btn-default" type="submit" value="Submit" /></p>
     </form>
   </div>
 {% endif %}
 
   {% for entry in entries %}
-    <p><h3>{{ entry.message }}</h3> {{ entry.poster.name }}  &nbsp;&nbsp;{{ entry.posted_date }} </p>
+        {% if entry.message_type %}
+    <p>
+      <h3>
+        {{ entry.message_type }}
+        
+    </h3> 
+        {{entry.message}}
+  </p>
+        {% endif %}
   {% endfor %}
 </div>
 {% endblock %}

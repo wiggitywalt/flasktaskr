@@ -25,23 +25,24 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">WIGGITY</a>
+            <a class="navbar-brand" href="/">wiggity</a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               {% if not session.logged_in %}
-                <li><a href="/register">SignUp</a></li>
-                <li><a href="/login">Login</a></li>
+                <li><a href="/register">SIGN-UP</a></li>
+                <li><a href="/login">LOGIN</a></li>
               {% else %}
-                <li><a href="/logout">SignOut</a></li>
+                <li><a href="/logout">SIGNOUT</a></li>
+                <li><a href="{{ url_for('messages.allmessages') }}">Snippets</a></li>
                 <li><a href="{{ url_for('tasks.tasks') }}">Tasks</a></li>
                 <li><a href="{{ url_for('users.allusers') }}">Users</a></li>
-                <li><a href="{{ url_for('messages.allmessages') }}">Messages</a></li>
+
               {% endif %}
             </ul>
             {% if session.logged_in %}
               <ul class="nav navbar-nav navbar-right">
-                <li><a>Welcome, {{ session['pretty_user_name'] }}</a></li>
+                <li><a>Sup, {{ session['pretty_user_name'] }}</a></li>
               </ul>
             {% endif %}
           </div><!--/.nav-collapse-->
@@ -64,8 +65,8 @@
         </div>
 
         <div class="footer">
-          <p>&copy; <a href="https://www.realpython.com">Real Python (rules!)</a>
-          </p>
+          <p>&copy; <a href="https://www.realpython.com">Real Python (rules!)</a></p>
+          
         </div>
       </div><!--/.container-->
 
