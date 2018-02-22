@@ -4,13 +4,11 @@
 
 <div class="container">
   <div class="jumbotron">
-    <h1>Wiggity to you!</h1>
-    <p>this, that, the other thing.</p>
+    <h1>snippets</h1>
   </div>
 {% if session.logged_in %}
   <div class="add-message">
-    <h3>Add a new task:</h3>
-
+    <h3>Add a new snippet:</h3>
     <form action="{{ url_for('messages.new_message') }}" method="POST">
       {{ form.csrf_token }}
     <p>
