@@ -1,10 +1,7 @@
 {% extends "_base.html" %}
 {% block content %}
-
-<a href="/logout">Logout</a>
-
 <div class="add-task">
-  <h3>Add a new snippet:</h3>
+  <h3>Add a task:</h3>
 
   <form action="{{ url_for('tasks.new_task') }}" method="POST">
     {{ form.csrf_token }}

@@ -1,4 +1,4 @@
-# project/messages/views.py
+# project/projects/views.py
 
 import datetime
 from functools import wraps
@@ -14,7 +14,7 @@ from project.models import Message
 ### config ###
 ##############
 
-messages_blueprint = Blueprint('messages', __name__)
+projects_blueprint = Blueprint('projects', __name__)
 
 ###############
 ### helpers ###
@@ -34,13 +34,13 @@ def login_required(test):
 ### routes ####
 ###############
 
-@messages_blueprint.route('/')
+@projects_blueprint.route('/')
 def main_page():
       return render_template(
         'index.html'
       )
 
-@messages_blueprint.route('/snippets')
+@projects_blueprint.route('/snippets')
 def allmessages():
     form = AddMessageForm(request.form)
     all_messages = db.session.query(Message).order_by(Message.message_type.desc()).all()
@@ -50,7 +50,7 @@ def allmessages():
       form = form
     )
 
-@messages_blueprint.route('/newmessage/', methods=['GET','POST'])
+@projects_blueprint.route('/newproject/', methods=['GET','POST'])
 @login_required
 def new_message():
     error = None

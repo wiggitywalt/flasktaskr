@@ -1,4 +1,5 @@
-#run.py
+#!/usr/bin/env python3
+# #run.py
 
 from project import app
 

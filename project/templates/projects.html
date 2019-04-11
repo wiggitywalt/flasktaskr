@@ -5,7 +5,7 @@
 <div class="container">
 {% if session.logged_in %}
   <div class="add-message">
-    <h3>Add a new snippet:</h3>
+    <h3>Add a new project:</h3>
     <form action="{{ url_for('messages.new_message') }}" method="POST">
       {{ form.csrf_token }}
     <p>
