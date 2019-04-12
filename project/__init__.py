@@ -29,7 +29,7 @@ app.register_blueprint(messages_blueprint)
 
 #error http codes (404 and 500)
 @app.errorhandler(404)
-def not_found(error):
+def e404(error):
     now = datetime.datetime.now()
     r = request.url
     with open('error.log', 'a') as f:
@@ -38,7 +38,7 @@ def not_found(error):
     return render_template('404.html'), 404
 
 @app.errorhandler(500)
-def internal_error(error):
+def e500(error):
     now = datetime.datetime.now()
     r = request.url
     with open('error.log', 'a') as f:

@@ -6,15 +6,15 @@
 {% if session.logged_in %}
   <div class="add-message">
     <h3>Add a new project:</h3>
-    <form action="{{ url_for('messages.new_message') }}" method="POST">
+    <form action="{{ url_for('projects.new_project') }}" method="POST">
       {{ form.csrf_token }}
     <p>
-      {{ form.message_type(placeholder="Type") }}
+      {{ form.project_type(placeholder="Type") }}
       <br /><br />
-      {{ form.message(placeholder="Snippet code", cols="75", rows="10") }} 
-        {% if form.message.errors %}
+      {{ form.project_type(placeholder="Project", cols="75", rows="10") }} 
+        {% if form.project_type.errors %}
         <span class="error">
-          {% for error in form.message.errors %}
+          {% for error in form.project_type.errors %}
             {{ error }}
           {% endfor %}
         </span>
