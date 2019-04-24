@@ -25,18 +25,6 @@
     </form>
   </div>
 {% endif %}
-
-  {% for entry in entries %}
-        {% if entry.message_type %}
-    <p>
-      <h3>
-        {{ entry.message_type }}
-        
-    </h3> 
-        {{entry.message}}
-  </p>
-        {% endif %}
-  {% endfor %}
 </div>
 {% endblock %}
 <script>
